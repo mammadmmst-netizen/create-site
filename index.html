@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA | طراحی سایت حرفه‌ای</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #050816;
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5, 8, 22, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #19a7ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #19a7ff;
+        }
+
+        .nav-btn {
+            background: #168cff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(22,140,255,0.5);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 130px 7% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #006eff;
+            filter: blur(170px);
+            opacity: 0.18;
+            top: -150px;
+            right: -150px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #00d9ff;
+            filter: blur(180px);
+            opacity: 0.12;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid #168cff;
+            border-radius: 50px;
+            color: #48b5ff;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 82px);
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #1da1ff;
+        }
+
+        .hero p {
+            color: #aeb9cc;
+            font-size: 18px;
+            max-width: 700px;
+            margin: auto;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 27px;
+            border-radius: 12px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #168cff;
+            box-shadow: 0 0 25px rgba(22,140,255,0.3);
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 35px rgba(22,140,255,0.6);
+        }
+
+        .secondary {
+            border: 1px solid #27364c;
+            color: #dbe7f5;
+        }
+
+        .secondary:hover {
+            border-color: #168cff;
+            background: #0b1424;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #168cff;
+        }
+
+        .section-title p {
+            color: #8995a8;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: linear-gradient(
+                145deg,
+                rgba(20,31,53,0.9),
+                rgba(8,14,28,0.9)
+            );
+            border: 1px solid #1d2a40;
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #168cff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #919caf;
+        }
+
+        /* PORTFOLIO */
+
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .project {
+            min-height: 220px;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(135deg, #101d33, #07101e);
+            border: 1px solid #1b2b42;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: scale(1.03);
+            border-color: #168cff;
+        }
+
+        .project h3 {
+            color: #fff;
+        }
+
+        .project p {
+            color: #8e9caf;
+        }
+
+        /* PRICING */
+
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .price-card {
+            text-align: center;
+            background: #0b1322;
+            border: 1px solid #1d2a40;
+            border-radius: 20px;
+            padding: 35px 25px;
+            transition: 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-7px);
+            border-color: #168cff;
+        }
+
+        .price {
+            font-size: 30px;
+            color: #20a5ff;
+            margin: 20px 0;
+        }
+
+        .price-card ul {
+            list-style: none;
+            color: #a5afc0;
+            margin-bottom: 25px;
+        }
+
+        .price-card li {
+            margin: 8px 0;
+        }
+
+        /* ABOUT */
+
+        .about {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about p {
+            color: #9da8ba;
+            font-size: 17px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            background: linear-gradient(145deg,#0d1b31,#07101d);
+            border: 1px solid #1b2b42;
+            border-radius: 25px;
+            padding: 55px 25px;
+        }
+
+        .contact h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: #9ca8ba;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid #172235;
+            color: #667388;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .services,
+            .portfolio,
+            .pricing {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+            .hero {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        NEXORA
+    </div>
+
+    <nav>
+        <a href="#services">خدمات</a>
+        <a href="#portfolio">نمونه‌کارها</a>
+        <a href="#pricing">قیمت‌ها</a>
+        <a href="#about">درباره من</a>
+    </nav>
+
+    <a
+        href="https://www.rubika.ir/mammadmostafa"
+        target="_blank"
+        class="nav-btn"
+    >
+        سفارش پروژه
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            طراحی سایت با قیمت مناسب
+        </div>
+
+        <h1>
+            سایت حرفه‌ای برای
+            <span>کسب‌وکار شما</span>
+        </h1>
+
+        <p>
+            طراحی وب‌سایت‌های مدرن، جذاب و ریسپانسیو
+            با قیمت‌های بسیار پایین و کاملاً توافقی.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="https://www.rubika.ir/mammadmostafa"
+                target="_blank"
+                class="btn primary"
+            >
+                ساخت پروژه
+            </a>
+
+            <a href="#portfolio" class="btn secondary">
+                مشاهده نمونه‌کارها
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="services">
+
+    <div class="section-title">
+
+        <h2>
+            خدمات <span>ما</span>
+        </h2>
+
+        <p>
+            چیزی که برای پروژه شما نیاز است
+        </p>
+
+    </div>
+
+    <div class="services">
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>
+                طراحی سایت
+            </h3>
+
+            <p>
+                طراحی سایت مدرن و حرفه‌ای با HTML و CSS
+                متناسب با نیاز شما.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📱</div>
+
+            <h3>
+                طراحی ریسپانسیو
+            </h3>
+
+            <p>
+                نمایش صحیح سایت در موبایل، تبلت و کامپیوتر.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎨</div>
+
+            <h3>
+                طراحی اختصاصی
+            </h3>
+
+            <p>
+                طراحی ظاهر سایت بر اساس سلیقه و نیاز شما.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="portfolio">
+
+    <div class="section-title">
+
+        <h2>
+            نمونه‌<span>کارها</span>
+        </h2>
+
+        <p>
+            بخشی از پروژه‌های طراحی شده
+        </p>
+
+    </div>
+
+    <div class="portfolio">
+
+        <div class="project">
+
+            <h3>
+                GAME ZONE
+            </h3>
+
+            <p>
+                طراحی سایت گیمینگ
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                NOIR FASHION
+            </h3>
+
+            <p>
+                طراحی سایت فروشگاهی
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                Personal Portfolio
+            </h3>
+
+            <p>
+                طراحی رزومه شخصی
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="pricing">
+
+    <div class="section-title">
+
+        <h2>
+            قیمت‌های <span>توافقی</span>
+        </h2>
+
+        <p>
+            قیمت نهایی بر اساس نوع پروژه تعیین می‌شود.
+        </p>
+
+    </div>
+
+    <div class="pricing">
+
+        <div class="price-card">
+
+            <h3>
+                پایه
+            </h3>
+
+            <div class="price">
+                اقتصادی
+            </div>
+
+            <ul>
+                <li>صفحه اصلی</li>
+                <li>HTML + CSS</li>
+                <li>طراحی ریسپانسیو</li>
+            </ul>
+
+            <a
+                href="https://www.rubika.ir/mammadmostafa"
+                target="_blank"
+                class="btn primary"
+            >
+                سفارش
+            </a>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3>
+                حرفه‌ای
+            </h3>
+
+            <div class="price">
+                توافقی
+            </div>
+
+            <ul>
+                <li>چند صفحه</li>
+                <li>طراحی اختصاصی</li>
+                <li>ریسپانسیو</li>
+            </ul>
+
+            <a
+                href="https://www.rubika.ir/mammadmostafa"
+                target="_blank"
+                class="btn primary"
+            >
+                سفارش
+            </a>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3>
+                اختصاصی
+            </h3>
+
+            <div class="price">
+                توافقی
+            </div>
+
+            <ul>
+                <li>طراحی کامل</li>
+                <li>امکانات اختصاصی</li>
+                <li>پشتیبانی</li>
+            </ul>
+
+            <a
+                href="https://www.rubika.ir/mammadmostafa"
+                target="_blank"
+                class="btn primary"
+            >
+                سفارش
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="about">
+
+    <div class="section-title">
+
+        <h2>
+            درباره <span>من</span>
+        </h2>
+
+    </div>
+
+    <div class="about">
+
+        <p>
+            من در زمینه طراحی وب فعالیت می‌کنم و هدفم ساخت
+            سایت‌هایی مدرن، زیبا و کاربردی با قیمت مناسب است.
+            پروژه‌ها بر اساس نیاز و بودجه مشتری طراحی می‌شوند
+            و قبل از شروع، جزئیات و هزینه با مشتری توافق خواهد شد.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="contact">
+
+        <h2>
+            پروژه‌ای در ذهن داری؟
+        </h2>
+
+        <p>
+            ایده‌ات را بگو تا با هم به یک سایت حرفه‌ای تبدیلش کنیم.
+        </p>
+
+        <a
+            href="https://www.rubika.ir/mammadmostafa"
+            target="_blank"
+            class="btn primary"
+        >
+            شروع پروژه
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 NEXORA — تمامی حقوق محفوظ است.
+
+</footer>
+
+</body>
+</html>
